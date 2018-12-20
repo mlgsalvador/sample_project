@@ -10,8 +10,12 @@ pipeline {
         stage('Create host file') {
             agent {label 'myMAC'}
             steps {
-                writeFile file: 'serverb', text: '''[serverb]
-54.227.164.74'''
+               sh '''cat > serverb <<-\'EOF\'
+[serverb]
+54.227.164.74
+EOF''' 
+ 
+
            }
         }
         stage('Execute Ansible') {
