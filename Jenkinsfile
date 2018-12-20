@@ -19,8 +19,8 @@ host_key_checking=false
 [ssh_connection]
 control_path = /dev/shm/cp%%h-%%p-%%r'''
                 script {
-                    ANSIBLE_CONFIG = "${WORKSPACE}/ssh_ansible.cfg"
-                    ANSIBLE_FORCE_COLOR = ‘true’
+                    ANSIBLE_CONFIG = '${WORKSPACE}/ssh_ansible.cfg'
+                    ANSIBLE_FORCE_COLOR = 'true'
                 }
 
            }
