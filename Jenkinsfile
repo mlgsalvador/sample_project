@@ -25,6 +25,7 @@ control_path = /dev/shm/cp%%h-%%p-%%r'''
             steps {
                 sshagent(['aws-key-id']) {
                  sh 'pwd'
+                 sh 'echo $WORKSPACE'
                 } 
             }
         }
