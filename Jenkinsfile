@@ -1,5 +1,9 @@
 pipeline {
-    agent { label 'ldap'} 
+    agent { label 'ldap'}
+    environment {
+            ANSIBLE_CONFIG = '${WORKSPACE}/ssh_ansible.cfg'
+            ANSIBLE_FORCE_COLOR = 'true'
+    }
     stages {
         stage('Clone') {
             steps {
@@ -18,11 +22,6 @@ host_key_checking=false
 
 [ssh_connection]
 control_path = /dev/shm/cp%%h-%%p-%%r'''
-                script {
-                    ANSIBLE_CONFIG = '${WORKSPACE}/ssh_ansible.cfg'
-                    ANSIBLE_FORCE_COLOR = 'true'
-                }
-
            }
         }
 
@@ -30,6 +29,7 @@ control_path = /dev/shm/cp%%h-%%p-%%r'''
             steps {
                 sshagent(['aws-key-id']) {
                  sh 'echo $ANSIBLE_CONFIG'
+                 sh 'ansible-playbook -i serverb -u centos --become --become-user root -e "target=serverb" site.yml'
                 } 
             }
         }
