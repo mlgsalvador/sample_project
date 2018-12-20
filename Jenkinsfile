@@ -10,7 +10,8 @@ pipeline {
 
         stage('Create host file') {
             steps {
-                
+            writeFile file: 'serverb', text: '''[serverb]
+52.23.157.232'''         
            }
         }
 
