@@ -10,7 +10,6 @@ pipeline {
         stage('Create host file') {
             agent {label 'myMAC'}
             steps {
-                sh 'vi serverb'
                 writeFile file: 'Desktop/malou/sample_project/serverb', text: '''[serverb]
                                 54.227.164.74'''
            }
