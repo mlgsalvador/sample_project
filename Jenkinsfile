@@ -4,6 +4,7 @@ pipeline {
         stage('Clone') {
             agent { label 'myMAC' }
             steps {
+               deleteDir()
                git credentialsId: 'github-id', url: 'https://github.com/mlgsalvador/Project_Ansible.git' 
             }
         }
@@ -14,8 +15,6 @@ pipeline {
 [serverb]
 54.227.164.74
 EOF''' 
- 
-
            }
         }
         stage('Execute Ansible') {
