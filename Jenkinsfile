@@ -17,7 +17,7 @@ pipeline {
 
         stage('Execute Ansible') {
             steps {
-                sh 'ls'
+                sh 'ansible-playbook -i serverb -u centos --become --become-user root -e "target=serverb" site.yml'
             }
         }
     }
